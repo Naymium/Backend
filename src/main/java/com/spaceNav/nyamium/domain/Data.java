@@ -34,7 +34,4 @@ public class Data extends BaseEntity {
     @OneToOne(mappedBy = "data", cascade = CascadeType.ALL)
     private OptionalValues optionalValues;
 
-    // AbnormalImage와 양방향 매핑
-    @OneToOne(mappedBy = "data", cascade = CascadeType.ALL)
-    private AbnormalImage abnormalImage;
 }
