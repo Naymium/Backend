@@ -30,6 +30,11 @@ public class Data extends BaseEntity {
     private Boolean prediction;
     private Float probability;
 
+    // FileData 와 양방향 매핑
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "file_id")
+    private FileData fileData;
+
     // OptionalValues와 양방향 매핑
     @OneToOne(mappedBy = "data", cascade = CascadeType.ALL)
     private OptionalValues optionalValues;
