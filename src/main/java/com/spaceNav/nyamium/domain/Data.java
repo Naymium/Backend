@@ -29,6 +29,7 @@ public class Data extends BaseEntity {
 
     private Boolean prediction;
     private Float probability;
+    private Boolean save; // 데이터 저장 여부(디비에 저장 후 저장 안하면 삭제하기 위함)
 
     // FileData 와 양방향 매핑
     @ManyToOne(fetch = FetchType.LAZY)
