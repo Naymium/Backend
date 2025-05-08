@@ -1,6 +1,8 @@
 package com.spaceNav.nyamium.domain;
 
 import com.spaceNav.nyamium.domain.common.BaseEntity;
+import com.spaceNav.nyamium.domain.enums.Prediction;
+import com.spaceNav.nyamium.domain.enums.Save;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,9 +29,9 @@ public class Data extends BaseEntity {
     private Float l3;
     private Float l4;
 
-    private Boolean prediction;
+    private Prediction prediction;
     private Float probability;
-    private Boolean save; // 데이터 저장 여부(디비에 저장 후 저장 안하면 삭제하기 위함)
+    private Save save; // 데이터 저장 여부(디비에 저장 후 저장 안하면 삭제하기 위함)
 
     // FileData 와 양방향 매핑
     @ManyToOne(fetch = FetchType.LAZY)
@@ -40,4 +42,11 @@ public class Data extends BaseEntity {
     @OneToOne(mappedBy = "data", cascade = CascadeType.ALL)
     private OptionalValues optionalValues;
 
+    /* 추가 로직 */
+
+    // Data 에 OptionalValues 매핑
+    public void addOptionalValues(OptionalValues optionalValues) {
+        this.optionalValues = optionalValues;
+    }
 }
+
