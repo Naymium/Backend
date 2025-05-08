@@ -1,6 +1,7 @@
 package com.spaceNav.nyamium.domain;
 
 import com.spaceNav.nyamium.domain.common.BaseEntity;
+import com.spaceNav.nyamium.domain.enums.Save;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,5 +27,5 @@ public class GraphImage extends BaseEntity {
 
     private Long normalDataNum;
     private Long abnormalDataNum;
-    private Boolean save; // 그래프 저장 여부(디비에 저장 후 저장 안하면 삭제하기 위함)
+    private Save save; // 그래프 저장 여부(디비에 저장 후 저장 안하면 삭제하기 위함)
 }

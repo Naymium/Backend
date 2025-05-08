@@ -3,6 +3,10 @@ package com.spaceNav.nyamium.config;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.media.Content;
+import io.swagger.v3.oas.models.media.MediaType;
+import io.swagger.v3.oas.models.media.Schema;
+import io.swagger.v3.oas.models.parameters.RequestBody;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
@@ -28,7 +32,12 @@ public class SwaggerConfig {
                         .name(jwtSchemeName)
                         .type(SecurityScheme.Type.HTTP) // HTTP 방식
                         .scheme("bearer")
-                        .bearerFormat("JWT"));
+                        .bearerFormat("JWT"))
+        .addRequestBodies("multipartRequestBody",  // 추가: multipart 지원
+                new RequestBody()
+                        .content(new Content().addMediaType("multipart/form-data",
+                                new MediaType().schema(new Schema<>().type("object")))));
+
 
         return new OpenAPI()
                 .addServersItem(new Server().url("/"))
