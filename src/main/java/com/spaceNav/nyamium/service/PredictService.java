@@ -43,6 +43,7 @@ public class PredictService {
         return null;
     }
 
+    @Transactional(readOnly = true)
     public Resource getPredictionFile(String filename) {
         try {
             File file = new File(savePath + filename);
