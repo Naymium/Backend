@@ -34,18 +34,18 @@ jobs:
           mkdir -p ~/.gradle
           echo "org.gradle.internal.launcher.welcomeMessageEnabled=false" >> ~/.gradle/gradle.properties
           echo "org.gradle.build-scan.agree=true" >> ~/.gradle/gradle.properties
+          echo "org.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64" >> ~/.gradle/gradle.properties
           
 
       - name: Grant execute permission for gradlew  # gradlew 실행 권한 부여
         run: chmod +x gradlew
 
       - name: Clean and Build with Gradle  # Gradle clean build 실행
-        uses: gradle/gradle-build-action@v3
-        with:
-          gradle-version: 8.13  # ✅ 명확하게 8.13 버전 사용
-          arguments: clean build --stacktrace --info --scan  # 🔹 자세한 로그 출력
-          cache-read-only: false  # Gradle 빌드 캐시 활성화 (빌드 속도 최적화)
-
+        run: |
+          ./gradlew wrapper --gradle-version 8.13 --distribution-type bin
+          chmod +x gradlew
+          ./gradlew -v  # ✅ 버전 확인
+          ./gradlew clean build --stacktrace --info --no-scan  # ✅ Build Scan 끄기
 
       - name: Upload Test Report  # 🔹 테스트 리포트 업로드
         if: failure()  # 테스트 실패 시에만 실행
