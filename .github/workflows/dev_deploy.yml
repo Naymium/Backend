@@ -23,6 +23,7 @@ jobs:
 
       - name: Make application.yml  # application.yml 파일 생성 및 환경 변수 적용
         run: |
+          mkdir -p src/main/resources  # 폴더가 없으면 생성
           cd ./src/main/resources
           echo "${{ secrets.APPLICATION_YML }}" > ./application.yml
           cat ./application.yml | envsubst > ./application.yml.tmp && mv ./application.yml.tmp ./application.yml
