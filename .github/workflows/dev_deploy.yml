@@ -32,22 +32,24 @@ jobs:
       - name: Grant execute permission for gradlew  # gradlew 실행 권한 부여
         run: chmod +x gradlew
 
-      - name: Check Java Home Path
+      - name: Set up Gradle Wrapper
         run: |
-          echo "JAVA_HOME: $JAVA_HOME"
-          ls -al $JAVA_HOME
+          ./gradlew wrapper --gradle-version 8.13 --distribution-type bin
+          chmod +x gradlew
 
       - name: Configure Gradle Properties  # Gradle 동의 설정
         run: |
           mkdir -p ~/.gradle
           echo "org.gradle.internal.launcher.welcomeMessageEnabled=false" >> ~/.gradle/gradle.properties
           echo "org.gradle.build-scan.agree=true" >> ~/.gradle/gradle.properties
-          echo "org.gradle.java.home=/usr/lib/jvm/temurin-17-jdk-amd64" >> ~/.gradle/gradle.properties
+          echo "org.gradle.java.home=$JAVA_HOME" >> ~/.gradle/gradle.properties
+
+      - name: Set Working Directory
+        run: cd Backend
 
       - name: Clean and Build with Gradle  # Gradle clean build 실행
+        working-directory: ./Backend  # ✅ Backend로 경로 설정
         run: |
-          ./gradlew wrapper --gradle-version 8.13 --distribution-type bin
-          chmod +x gradlew
           ./gradlew -v
           ./gradlew clean build --stacktrace --info --no-scan
 
