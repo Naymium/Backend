@@ -29,12 +29,20 @@ jobs:
           cat ./application.yml | envsubst > ./application.yml.tmp && mv ./application.yml.tmp ./application.yml
         shell: bash
 
+      - name: Configure Gradle Properties  # Gradle 동의 설정
+        run: |
+          mkdir -p ~/.gradle
+          echo "org.gradle.internal.launcher.welcomeMessageEnabled=false" >> ~/.gradle/gradle.properties
+          echo "org.gradle.build-scan.agree=true" >> ~/.gradle/gradle.properties
+          
+
       - name: Grant execute permission for gradlew  # gradlew 실행 권한 부여
         run: chmod +x gradlew
 
       - name: Clean and Build with Gradle  # Gradle clean build 실행
         uses: gradle/gradle-build-action@v3
         with:
+          gradle-version: 8.13  # ✅ 명확하게 8.13 버전 사용
           arguments: clean build --stacktrace --info --scan  # 🔹 자세한 로그 출력
           cache-read-only: false  # Gradle 빌드 캐시 활성화 (빌드 속도 최적화)
 
