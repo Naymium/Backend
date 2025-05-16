@@ -29,23 +29,28 @@ jobs:
           cat ./application.yml | envsubst > ./application.yml.tmp && mv ./application.yml.tmp ./application.yml
         shell: bash
 
+      - name: Grant execute permission for gradlew  # gradlew 실행 권한 부여
+        run: chmod +x gradlew
+
+      - name: Check Java Home Path
+        run: |
+          echo "JAVA_HOME: $JAVA_HOME"
+          ls -al $JAVA_HOME
+
       - name: Configure Gradle Properties  # Gradle 동의 설정
         run: |
           mkdir -p ~/.gradle
           echo "org.gradle.internal.launcher.welcomeMessageEnabled=false" >> ~/.gradle/gradle.properties
           echo "org.gradle.build-scan.agree=true" >> ~/.gradle/gradle.properties
-          echo "org.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64" >> ~/.gradle/gradle.properties
-          
-
-      - name: Grant execute permission for gradlew  # gradlew 실행 권한 부여
-        run: chmod +x gradlew
+          echo "org.gradle.java.home=/usr/lib/jvm/temurin-17-jdk-amd64" >> ~/.gradle/gradle.properties
 
       - name: Clean and Build with Gradle  # Gradle clean build 실행
         run: |
           ./gradlew wrapper --gradle-version 8.13 --distribution-type bin
           chmod +x gradlew
-          ./gradlew -v  # ✅ 버전 확인
-          ./gradlew clean build --stacktrace --info --no-scan  # ✅ Build Scan 끄기
+          ./gradlew -v
+          ./gradlew clean build --stacktrace --info --no-scan
+
 
       - name: Upload Test Report  # 🔹 테스트 리포트 업로드
         if: failure()  # 테스트 실패 시에만 실행
