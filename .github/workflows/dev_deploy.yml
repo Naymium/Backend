@@ -46,7 +46,7 @@ jobs:
       - name: Clean and Build with Gradle
         run: |
           ./gradlew -v
-          ./gradlew clean build --stacktrace --info --no-scan
+          ./gradlew clean build --stacktrace --info --no-scan --warning-mode all
 
 
       - name: Upload Test Report  # 🔹 테스트 리포트 업로드
