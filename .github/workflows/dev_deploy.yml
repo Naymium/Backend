@@ -44,14 +44,11 @@ jobs:
           echo "org.gradle.build-scan.agree=true" >> ~/.gradle/gradle.properties
           echo "org.gradle.java.home=$JAVA_HOME" >> ~/.gradle/gradle.properties
 
-      - name: Set Working Directory
-        run: cd Backend
-
       - name: Clean and Build with Gradle  # Gradle clean build 실행
-        working-directory: ./Backend  # ✅ Backend로 경로 설정
-        run: |
-          ./gradlew -v
-          ./gradlew clean build --stacktrace --info --no-scan
+        uses: gradle/gradle-build-action@v3
+        with:
+          arguments: clean build --stacktrace --info --scan  # 🔹 자세한 로그 출력
+          cache-read-only: false  # Gradle 빌드 캐시 활성화 (빌드 속도 최적화)
 
 
       - name: Upload Test Report  # 🔹 테스트 리포트 업로드
