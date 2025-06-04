@@ -9,5 +9,4 @@ public class NyamiumApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NyamiumApplication.class, args);
 	}
-
 }
