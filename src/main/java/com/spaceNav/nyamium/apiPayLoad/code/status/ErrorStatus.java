@@ -17,7 +17,10 @@ public enum ErrorStatus implements BaseErrorCode {
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
     //그래프 이미지 관련
-    GRAPH_IMAGE_NOT_FOUND(HttpStatus.BAD_REQUEST, "GRAPH4001", "그래프 이미지를 찾을 수 없습니다.")
+    GRAPH_IMAGE_NOT_FOUND(HttpStatus.BAD_REQUEST, "GRAPH4001", "그래프 이미지를 찾을 수 없습니다."),
+
+    //데이터 관련
+    DATA_NOT_FOUND(HttpStatus.BAD_REQUEST, "DATA4001", "데이터를 찾을 수 없습니다.")
     ;
 
     private final HttpStatus httpStatus;
