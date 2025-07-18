@@ -5,9 +5,9 @@ import com.spaceNav.nyamium.web.dto.GraphResponseDTO;
 
 public class GraphConverter {
 
-    public static GraphResponseDTO.ResultResponseDTO toNormalGraphResponseDTO(GraphImage graphImage) {
+    public static GraphResponseDTO.GraphResultResponseDTO toNormalGraphResponseDTO(GraphImage graphImage) {
 
-        return GraphResponseDTO.ResultResponseDTO.builder()
+        return GraphResponseDTO.GraphResultResponseDTO.builder()
                 .id(graphImage.getId())
                 .imageUrl(graphImage.getNormalDataUrl())
                 .dataNum(graphImage.getNormalDataNum())
@@ -15,9 +15,9 @@ public class GraphConverter {
                 .build();
     }
 
-    public static GraphResponseDTO.ResultResponseDTO toAbnormalGraphResponseDTO(GraphImage graphImage) {
+    public static GraphResponseDTO.GraphResultResponseDTO toAbnormalGraphResponseDTO(GraphImage graphImage) {
 
-        return GraphResponseDTO.ResultResponseDTO.builder()
+        return GraphResponseDTO.GraphResultResponseDTO.builder()
                 .id(graphImage.getId())
                 .imageUrl(graphImage.getAbnormalDataUrl())
                 .dataNum(graphImage.getAbnormalDataNum())

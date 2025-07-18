@@ -1,13 +1,11 @@
 package com.spaceNav.nyamium.web.dto;
 
-import com.spaceNav.nyamium.domain.enums.Prediction;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class GraphResponseDTO {
 
@@ -16,7 +14,7 @@ public class GraphResponseDTO {
     @NoArgsConstructor
     @Getter
     @Builder
-    public static class ResultResponseDTO{
+    public static class GraphResultResponseDTO {
         private Long id;
         private String imageUrl;
         private Long dataNum;
