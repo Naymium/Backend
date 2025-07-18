@@ -18,7 +18,7 @@ public class GraphController {
 
     @Operation(summary = "정상 데이터 그래프 확인", description = "S3 로부터 현재 데이터(최신)를 이용한 정상 데이터 그래프를 가져옵니다.")
     @GetMapping(value = "/normal")
-    public ApiResponse<GraphResponseDTO.ResultResponseDTO> getNormalGraph() {
+    public ApiResponse<GraphResponseDTO.GraphResultResponseDTO> getNormalGraph() {
 
         GraphImage graphImage = graphService.getRecentGraph();
         return ApiResponse.onSuccess(GraphConverter.toNormalGraphResponseDTO(graphImage));
@@ -26,7 +26,7 @@ public class GraphController {
 
     @Operation(summary = "비정상 데이터 그래프 확인", description = "S3 로부터 현재 데이터(최신)를 이용한 비정상 데이터 그래프를 가져옵니다.")
     @GetMapping(value = "/abnormal")
-    public ApiResponse<GraphResponseDTO.ResultResponseDTO> getAbnormalGraph() {
+    public ApiResponse<GraphResponseDTO.GraphResultResponseDTO> getAbnormalGraph() {
 
         GraphImage graphImage = graphService.getRecentGraph();
         return ApiResponse.onSuccess(GraphConverter.toAbnormalGraphResponseDTO(graphImage));
