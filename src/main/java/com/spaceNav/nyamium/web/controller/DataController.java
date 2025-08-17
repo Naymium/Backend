@@ -41,7 +41,7 @@ public class DataController {
                 .body(csvData);
     }
 
-    @Operation(summary = "데이터 삭제 삭제", description = "선택한 데이터를 삭제합니다.")
+    @Operation(summary = "데이터 삭제", description = "선택한 데이터를 삭제합니다.")
     @DeleteMapping("/{dataId}")
     public ApiResponse<DataResponseDTO.DeleteDataResponseDTO> deleteData(
             @PathVariable Long dataId) {

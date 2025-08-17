@@ -22,6 +22,7 @@ public class FileData extends BaseEntity {
 
     private String fileName;
 
+    private String keyName;  //fileKey
     private String fileUrl;
 
     private Long dataNum;
