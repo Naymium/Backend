@@ -24,13 +24,29 @@ public class AmazonS3Manager{
     public String uploadFile(String keyName, MultipartFile file){
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(file.getSize());
+        metadata.setContentType(file.getContentType());
         try {
-            amazonS3.putObject(new PutObjectRequest(amazonConfig.getBucket(), keyName, file.getInputStream(), metadata));
+            amazonS3.putObject(
+                    new PutObjectRequest(
+                            amazonConfig.getBucket(),
+                            keyName,
+                            file.getInputStream(),
+                            metadata));
         } catch (IOException e){
             log.error("error at AmazonS3Manager uploadFile : {}", (Object) e.getStackTrace());
         }
 
+        return getFileUrl(keyName);
+    }
+
+    // 파일 접근 URL 생성 메서드
+    public String getFileUrl(String keyName) {
         return amazonS3.getUrl(amazonConfig.getBucket(), keyName).toString();
+    }
+
+    // S3 에 있는 파일 삭제
+    public void deleteFileFromS3(String keyName) {
+        amazonS3.deleteObject(amazonConfig.getBucket(), keyName);
     }
 
     public String generateGraphKeyName() {

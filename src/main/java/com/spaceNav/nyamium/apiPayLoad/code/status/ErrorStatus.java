@@ -20,7 +20,10 @@ public enum ErrorStatus implements BaseErrorCode {
     GRAPH_IMAGE_NOT_FOUND(HttpStatus.BAD_REQUEST, "GRAPH4001", "그래프 이미지를 찾을 수 없습니다."),
 
     //데이터 관련
-    DATA_NOT_FOUND(HttpStatus.BAD_REQUEST, "DATA4001", "데이터를 찾을 수 없습니다.")
+    DATA_NOT_FOUND(HttpStatus.BAD_REQUEST, "DATA4001", "데이터를 찾을 수 없습니다."),
+
+    //파일 관련
+    FILE_NOT_FOUND(HttpStatus.BAD_REQUEST, "FILE4001", "파일을 찾을 수 없습니다.")
     ;
 
     private final HttpStatus httpStatus;
