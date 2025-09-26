@@ -29,8 +29,14 @@ public class Data extends BaseEntity {
     private Float l3;
     private Float l4;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
     private Prediction prediction;
+
     private Float probability;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
     private Save save; // 데이터 저장 여부(디비에 저장 후 저장 안하면 삭제하기 위함)
 
     // FileData 와 양방향 매핑
