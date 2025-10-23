@@ -1,6 +1,8 @@
 package com.spaceNav.nyamium.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.spaceNav.nyamium.domain.enums.Prediction;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +33,7 @@ public class DataResponseDTO {
 
         private Float rangingError;
         private Float delta;
-        private Float fD;
+        private Float fd;
         private Float sigma;
     }
 

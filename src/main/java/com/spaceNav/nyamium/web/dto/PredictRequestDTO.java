@@ -1,5 +1,7 @@
 package com.spaceNav.nyamium.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
 @Getter
@@ -16,6 +18,6 @@ public class PredictRequestDTO {
 
         Float rangingError;
         Float delta;
-        Float fD;
+        Float fd;
         Float sigma;
 }
