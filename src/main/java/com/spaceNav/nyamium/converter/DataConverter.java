@@ -24,7 +24,7 @@ public class DataConverter {
                 .probability(data.getProbability())
                 .rangingError(data.getOptionalValues() != null ? data.getOptionalValues().getRangingError() : null)
                 .delta(data.getOptionalValues() != null ? data.getOptionalValues().getDelta() : null)
-                .fD(data.getOptionalValues() != null ? data.getOptionalValues().getFD() : null)
+                .fd(data.getOptionalValues() != null ? data.getOptionalValues().getFd() : null)
                 .sigma(data.getOptionalValues() != null ? data.getOptionalValues().getSigma() : null)
                 .build();
     }

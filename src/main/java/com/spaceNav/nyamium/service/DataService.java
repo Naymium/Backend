@@ -40,16 +40,16 @@ public class DataService {
         OutputStreamWriter writer = new OutputStreamWriter(out, StandardCharsets.UTF_8);
         CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader(
                 "id", "e1", "e2", "e3", "e4", "l1", "l2", "l3", "l4",
-                "prediction", "probability",
-                "rangingError", "delta", "fD", "sigma"
+                "rangingError", "delta", "fd", "sigma",
+                "prediction", "probability"
         ));
 
         for (DataResponseDTO.GetOneDataResponseDTO dto : dtoList.getGetAllDataResponseDTO()) {
             csvPrinter.printRecord(
                     dto.getId(), dto.getE1(), dto.getE2(), dto.getE3(), dto.getE4(),
                     dto.getL1(), dto.getL2(), dto.getL3(), dto.getL4(),
-                    dto.getPrediction(), dto.getProbability(),
-                    dto.getRangingError(), dto.getDelta(), dto.getFD(), dto.getSigma()
+                    dto.getRangingError(), dto.getDelta(), dto.getFd(), dto.getSigma(),
+                    dto.getPrediction(), dto.getProbability()
             );
         }
 

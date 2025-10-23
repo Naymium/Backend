@@ -54,5 +54,9 @@ public class Data extends BaseEntity {
     public void addOptionalValues(OptionalValues optionalValues) {
         this.optionalValues = optionalValues;
     }
+    // Save Status 수정
+    public void changeSaveStatus(Save save) {
+        this.save = save;
+    }
 }
 

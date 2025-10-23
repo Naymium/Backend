@@ -39,10 +39,30 @@ public class AmazonS3Manager{
         return getFileUrl(keyName);
     }
 
+    public String putGraphImageToS3(String keyName, byte[] bytes, String contentType) {
+        ObjectMetadata metaData = new ObjectMetadata();
+        metaData.setContentType(contentType);
+        metaData.setContentLength(bytes.length);
+
+        try (java.io.InputStream in = new java.io.ByteArrayInputStream(bytes)) {
+            amazonS3.putObject(
+                    amazonConfig.getBucket(),
+                    keyName,
+                    in,
+                    metaData);
+        } catch (Exception e) {
+            throw new RuntimeException("S3 업로드 실패: " + keyName, e);
+        }
+        return getGraphUrl(keyName);
+    }
+
     // 파일 접근 URL 생성 메서드
     public String getFileUrl(String keyName) {
         return amazonS3.getUrl(amazonConfig.getBucket(), keyName).toString();
     }
+
+    // 그래프 접근 URL 생성 메서드
+    public String getGraphUrl(String keyName) {return amazonS3.getUrl(amazonConfig.getBucket(), keyName).toString();}
 
     // S3 에 있는 파일 삭제
     public void deleteFileFromS3(String keyName) {

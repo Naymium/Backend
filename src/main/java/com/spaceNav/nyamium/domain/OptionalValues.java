@@ -23,6 +23,6 @@ public class OptionalValues {
 
     private Float rangingError;
     private Float delta;
-    private Float fD;
+    private Float fd;
     private Float sigma;
 }

@@ -29,4 +29,9 @@ public class FileData extends BaseEntity {
 
     @OneToMany(mappedBy = "fileData", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Data> dataList;
+
+    // fileData 에 DataList 매핑
+    public void addDataList(List<Data> dataList) {
+        this.dataList = dataList;
+    }
 }

@@ -22,6 +22,9 @@ public class GraphImage extends BaseEntity {
     private String normalDataUrl;
     private String abnormalDataUrl;
 
+    private String normalDataKeyName;
+    private String abnormalDataKeyName;
+
     private Long normalDataNum;
     private Long abnormalDataNum;
 
