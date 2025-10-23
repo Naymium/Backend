@@ -8,31 +8,16 @@ import java.util.Base64;
 
 public class GraphConverter {
 
-    public static GraphResponseDTO.GraphResultResponseDTO toNormalGraphResultResponseDTO(GraphImage graphImage) {
+    public static GraphResponseDTO.GraphResultResponseDTO toGraphResultResponseDTO(GraphImage graphImage) {
 
         return GraphResponseDTO.GraphResultResponseDTO.builder()
                 .id(graphImage.getId())
-                .imageUrl(graphImage.getNormalDataUrl())
-                .imageKeyName(graphImage.getNormalDataKeyName())
-                .dataCount(graphImage.getNormalDataNum())
-                .build();
-    }
-
-    public static GraphResponseDTO.GraphResultResponseDTO toAbnormalGraphResultResponseDTO(GraphImage graphImage) {
-
-        return GraphResponseDTO.GraphResultResponseDTO.builder()
-                .id(graphImage.getId())
-                .imageUrl(graphImage.getAbnormalDataUrl())
-                .imageKeyName(graphImage.getAbnormalDataKeyName())
-                .dataCount(graphImage.getAbnormalDataNum())
-                .build();
-    }
-
-    public static GraphResponseDTO.SaveResponseDTO toSaveResponseDTO(GraphImage graphImage) {
-
-        return GraphResponseDTO.SaveResponseDTO.builder()
-                .id(graphImage.getId())
-                .message("현재 Normal/Abnormal 데이터 그래프를 저장하였습니다.")
+                .normalDataUrl(graphImage.getNormalDataUrl())
+                .abnormalDataUrl(graphImage.getAbnormalDataUrl())
+                .normalDataKeyName(graphImage.getNormalDataKeyName())
+                .abnormalDataKeyName(graphImage.getAbnormalDataKeyName())
+                .normalDataNum(graphImage.getNormalDataNum())
+                .abnormalDataNum(graphImage.getAbnormalDataNum())
                 .build();
     }
 }

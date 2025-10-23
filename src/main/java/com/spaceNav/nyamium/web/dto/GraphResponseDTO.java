@@ -16,28 +16,14 @@ public class GraphResponseDTO {
     @Builder
     public static class GraphResultResponseDTO {
         private Long id;
-        private String imageUrl;// 그래프 PNG (base64)
-        private String imageKeyName;
-        private long dataCount;         // 비정상 데이터 개수
-    }
 
-//    @AllArgsConstructor
-//    @NoArgsConstructor
-//    @Getter
-//    @Builder
-//    public class GraphBytesDTO {
-//        private byte[] normal;
-//        private byte[] abnormal;
-//        private long normalCount;
-//        private long abnormalCount;
-//    }
+        private String normalDataUrl;
+        private String abnormalDataUrl;
 
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Getter
-    @Builder
-    public static class SaveResponseDTO{
-        private Long id;
-        private String message; //저장 관련 메시지
+        private String normalDataKeyName;
+        private String abnormalDataKeyName;
+
+        private Long normalDataNum;
+        private Long abnormalDataNum;
     }
 }
