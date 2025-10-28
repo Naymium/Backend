@@ -17,7 +17,7 @@ public enum ErrorStatus implements BaseErrorCode {
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
     // FileType 관련
-    FILE_TYPE_NOT_CORRECT(HttpStatus.BAD_REQUEST, "FILEDATA4001", "MATLAB .mat 파일만 업로드 가능합니다."),
+    FILE_TYPE_NOT_CORRECT(HttpStatus.BAD_REQUEST, "FILEDATA4001", "Json 파일만 업로드 가능합니다."),
 
     //그래프 이미지 관련
     GRAPH_IMAGE_NOT_FOUND(HttpStatus.BAD_REQUEST, "GRAPH4001", "그래프 이미지를 찾을 수 없습니다."),
