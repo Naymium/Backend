@@ -35,6 +35,8 @@ public class DataResponseDTO {
         private Float delta;
         private Float fd;
         private Float sigma;
+
+        private LocalDateTime createdAt;
     }
 
     /* 데이터 삭제 */

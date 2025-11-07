@@ -26,6 +26,7 @@ public class DataConverter {
                 .delta(data.getOptionalValues() != null ? data.getOptionalValues().getDelta() : null)
                 .fd(data.getOptionalValues() != null ? data.getOptionalValues().getFd() : null)
                 .sigma(data.getOptionalValues() != null ? data.getOptionalValues().getSigma() : null)
+                .createdAt(data.getCreatedAt())
                 .build();
     }
 
