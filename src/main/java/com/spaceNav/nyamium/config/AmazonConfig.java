@@ -28,13 +28,13 @@ public class AmazonConfig {
     @Value("${cloud.aws.region.static}")
     private String region;
 
-    @Value("${cloud.aws.s3.bucket")
+    @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
-    @Value("${cloud.aws.s3.path.graph")
+    @Value("${cloud.aws.path.graph}")
     private String graphPath;
 
-    @Value("${cloud.aws.s3.path.file-data")
+    @Value("${cloud.aws.path.file-data}")
     private String fileDataPath;
 
     @PostConstruct

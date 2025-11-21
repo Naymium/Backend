@@ -293,9 +293,7 @@ public class PredictService {
     private String runPythonWithInputJson(String jsonPath) throws Exception {
         ProcessBuilder pb = new ProcessBuilder(
                 "python3", "predict.py",
-                "--file", jsonPath,            // <-- 필요 시 "--input-json" 등으로 변경
-                "--scaler", "/app/ml/scaler.pkl",
-                "--model",  "/app/ml/model.pkl"
+                "--file", jsonPath
         );
         pb.redirectErrorStream(false);
 
