@@ -117,7 +117,11 @@ public class PredictService {
                 prediction = prob > 0.75f ? Prediction.ABNORMAL : Prediction.NORMAL;
             }
             Float probability = getNum(outItem.get("probability"));
-            if (probability == null) probability = getNum(outItem.get("prob")); // 호환 키
+            if (probability == null) probability = getNum(outItem.get("prob"));// 호환 키
+
+            if(probability > 1){
+                probability = 1.0f;
+            }
 
             // 4) Data 저장
             Data data = Data.builder()
@@ -247,13 +251,14 @@ public class PredictService {
                 }
 
                 Float probability = getNum(r.has("probability") ? r.get("probability") : r.get("prob"));
+                if(probability > 1) probability = 1.0f;
 
                 Data data = Data.builder()
                         .e1(e1).e2(e2).e3(e3).e4(e4)
                         .l1(l1).l2(l2).l3(l3).l4(l4)
                         .prediction(prediction)
                         .probability(probability)
-                        .save(Save.NOT_SAVE)
+                        .save(Save.SAVE)
                         .fileData(fileData)
                         .build();
                 Data savedData = dataRepository.save(data);
